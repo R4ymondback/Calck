@@ -168,7 +168,7 @@ int main() {
             }
         }
 
-        cout << "\nApakah ingin menghitung lagi? (y/n): ";
+        cout << "\nApakah Anda ingin menghitung lagi? (y/n): ";
         cin >> ulang;
         cout << "\n";
 
@@ -177,3 +177,4 @@ int main() {
     cout << "Terima kasih sudah menggunakan Calck!\n";
     return 0;
 }
+
