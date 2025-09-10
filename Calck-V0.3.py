@@ -1,10 +1,10 @@
 import math
 
-def judul():
+def title():
     h = 7
     w = 7
     for i in range(h):
-        # Huruf C
+        # Letter C
         for j in range(w):
             if i == 0 or i == h - 1 or j == 0:
                 print("#", end="")
@@ -12,7 +12,7 @@ def judul():
                 print(" ", end="")
         print("  ", end="")
 
-        # Huruf A
+        # Letter A
         for j in range(w):
             if i == 0 or j == 0 or j == w - 1 or i == h // 2:
                 print("#", end="")
@@ -20,7 +20,7 @@ def judul():
                 print(" ", end="")
         print("  ", end="")
 
-        # Huruf L
+        # Letter L
         for j in range(w):
             if j == 0 or i == h - 1:
                 print("#", end="")
@@ -28,7 +28,7 @@ def judul():
                 print(" ", end="")
         print("  ", end="")
 
-        # Huruf C
+        # Letter C
         for j in range(w):
             if i == 0 or i == h - 1 or j == 0:
                 print("#", end="")
@@ -36,7 +36,7 @@ def judul():
                 print(" ", end="")
         print("  ", end="")
 
-        # Huruf K
+        # Letter K
         for j in range(w):
             if j == 0 or (i + j == h // 2) or (i - j == h // 2 - 1):
                 print("#", end="")
@@ -45,105 +45,105 @@ def judul():
         print()
 
 
-def laydes():
+def description():
     print("\n" + "=" * 41)
     print("Version: 0.1 (Beta)")
     print("Author : RE33")
-    print("Fitur  : Operasi dasar + tambahan (modulus, pangkat, akar, rata-rata, dll)")
+    print("Features: Basic operations + extras (modulus, power, root, average, etc.)")
     print("Calck is a simple calculator plugin based on the Python console.")
     print("This initial version is designed to provide basic calculator functions with a minimalistic design and lightweight performance.")
-    print("Harapannya kedepannya saya bakal buat game dengan nama Clack :)")
+    print("In the future, I hope to create a game called Clack :)")
     print("=" * 126 + "\n")
 
 
-def kalkulator():
+def calculator():
     while True:
-        print("Pilih Operasi:")
-        print("+    : Tambah")
-        print("-    : Kurang")
-        print("*    : Kali")
-        print("/    : Bagi")
-        print("%    : Modulus (sisa bagi)")
-        print("^    : Pangkat")
-        print("sqrt : Akar kuadrat")
-        print("avg  : Rata-rata")
-        print("max  : Angka terbesar")
-        print("min  : Angka terkecil")
+        print("Choose Operation:")
+        print("+    : Addition")
+        print("-    : Subtraction")
+        print("*    : Multiplication")
+        print("/    : Division")
+        print("%    : Modulus (remainder)")
+        print("^    : Power")
+        print("sqrt : Square root")
+        print("avg  : Average")
+        print("max  : Maximum")
+        print("min  : Minimum")
 
-        pilihan = input("Masukan pilihan: ")
+        choice = input("Enter your choice: ")
 
-        if pilihan == "sqrt":
-            x = float(input("Masukan angka: "))
+        if choice == "sqrt":
+            x = float(input("Enter a number: "))
             if x >= 0:
-                print("Hasil akar:", math.sqrt(x))
+                print("Square root:", math.sqrt(x))
             else:
-                print("Error: Tidak bisa akar negatif!")
+                print("Error: Cannot calculate square root of a negative number!")
 
-        elif pilihan == "^":
-            a = float(input("Masukan basis: "))
-            b = float(input("Masukan pangkat: "))
-            print("Hasil:", pow(a, b))
+        elif choice == "^":
+            a = float(input("Enter base: "))
+            b = float(input("Enter exponent: "))
+            print("Result:", pow(a, b))
 
-        elif pilihan == "%":
-            a = int(input("Masukan bilangan 1: "))
-            b = int(input("Masukan bilangan 2: "))
+        elif choice == "%":
+            a = int(input("Enter number 1: "))
+            b = int(input("Enter number 2: "))
             if b != 0:
-                print("Hasil:", a % b)
+                print("Result:", a % b)
             else:
-                print("Error: Modulo dengan nol tidak bisa!")
+                print("Error: Cannot modulo by zero!")
 
         else:
-            n = int(input("Mau berapa angka yang ingin dioperasikan: "))
-            angka = [float(input(f"Masukan angka ke-{i+1}: ")) for i in range(n)]
+            n = int(input("How many numbers do you want to operate on: "))
+            numbers = [float(input(f"Enter number {i+1}: ")) for i in range(n)]
 
-            hasil = angka[0]
+            result = numbers[0]
 
-            if pilihan == "+":
+            if choice == "+":
                 for i in range(1, n):
-                    hasil += angka[i]
-                print("Hasil:", hasil)
+                    result += numbers[i]
+                print("Result:", result)
 
-            elif pilihan == "-":
+            elif choice == "-":
                 for i in range(1, n):
-                    hasil -= angka[i]
-                print("Hasil:", hasil)
+                    result -= numbers[i]
+                print("Result:", result)
 
-            elif pilihan == "*":
+            elif choice == "*":
                 for i in range(1, n):
-                    hasil *= angka[i]
-                print("Hasil:", hasil)
+                    result *= numbers[i]
+                print("Result:", result)
 
-            elif pilihan == "/":
+            elif choice == "/":
                 for i in range(1, n):
-                    if angka[i] != 0:
-                        hasil /= angka[i]
+                    if numbers[i] != 0:
+                        result /= numbers[i]
                     else:
-                        print("Error: Pembagian dengan nol tidak bisa!")
-                        hasil = None
+                        print("Error: Cannot divide by zero!")
+                        result = None
                         break
-                if hasil is not None:
-                    print("Hasil:", hasil)
+                if result is not None:
+                    print("Result:", result)
 
-            elif pilihan == "avg":
-                print("Rata-rata:", sum(angka) / n)
+            elif choice == "avg":
+                print("Average:", sum(numbers) / n)
 
-            elif pilihan == "max":
-                print("Maksimum:", max(angka))
+            elif choice == "max":
+                print("Maximum:", max(numbers))
 
-            elif pilihan == "min":
-                print("Minimum:", min(angka))
+            elif choice == "min":
+                print("Minimum:", min(numbers))
 
             else:
-                print("Operasi tidak valid!")
+                print("Invalid operation!")
 
-        ulang = input("\nApakah ingin menghitung lagi? (y/n): ")
-        if ulang.lower() != "y":
+        again = input("\nDo you want to calculate again? (y/n): ")
+        if again.lower() != "y":
             break
 
-    print("Terima kasih sudah menggunakan Calck!")
+    print("Thank you for using Calck!")
 
 
 if __name__ == "__main__":
-    judul()
-    laydes()
-    kalkulator()
+    title()
+    description()
+    calculator()
