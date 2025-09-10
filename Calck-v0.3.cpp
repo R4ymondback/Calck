@@ -55,10 +55,11 @@ void LayDes() {
     cout << "\n";
     cout << "Version: 0.1 (Beta)\n";
     cout << "Author: RE33\n";
-    cout << "Fitur  : Operasi dasar + tambahan (modulus, pangkat, akar, rata-rata, dll)\n";
+    cout << "Features: Basic operations + extras (modulus, power, root, average, etc.)\n";
     cout << "Calck is a simple calculator plugin based on the C++ console.\n";
     cout << "This initial version is designed to provide basic calculator functions with a minimalistic design and lightweight performance.\n";
-    cout << "Harapannya kedepannya saya bakal buat game dengan nama Clack :)\n";
+    cout << "In the future, I hope to create a game called Clack :)\n";
+
     for (int i = 0; i < 126; i++) {
         cout << "=";
     }
@@ -73,108 +74,107 @@ int main() {
     char ulang;
 
     do {
-        cout << "Pilih Operasi:\n";
-        cout << "+    : Tambah\n";
-        cout << "-    : Kurang\n";
-        cout << "*    : Kali\n";
-        cout << "/    : Bagi\n";
-        cout << "%    : Modulus (sisa bagi)\n";
-        cout << "^    : Pangkat\n";
-        cout << "sqrt : Akar kuadrat\n";
-        cout << "avg  : Rata-rata\n";
-        cout << "max  : Angka terbesar\n";
-        cout << "min  : Angka terkecil\n";
-        cout << "Masukan pilihan: ";
-        cin >> pilihan;
+    cout << "Choose Operation:\n";
+    cout << "+    : Addition\n";
+    cout << "-    : Subtraction\n";
+    cout << "*    : Multiplication\n";
+    cout << "/    : Division\n";
+    cout << "%    : Modulus (remainder)\n";
+    cout << "^    : Power\n";
+    cout << "sqrt : Square root\n";
+    cout << "avg  : Average\n";
+    cout << "max  : Maximum\n";
+    cout << "min  : Minimum\n";
+    cout << "Enter your choice: ";
+    cin >> pilihan;
 
-        int n;
-        vector<double> angka;
+    int n;
+    vector<double> angka;
 
-        if (pilihan == "sqrt") {
-            double x;
-            cout << "Masukan angka: ";
-            cin >> x;
-            if (x >= 0) cout << "Hasil akar: " << sqrt(x) << "\n";
-            else cout << "Error: Tidak bisa akar negatif!\n";
+    if (pilihan == "sqrt") {
+        double x;
+        cout << "Enter a number: ";
+        cin >> x;
+        if (x >= 0) cout << "Square root: " << sqrt(x) << "\n";
+        else cout << "Error: Cannot calculate square root of a negative number!\n";
+    }
+    else if (pilihan == "^") {
+        double a, b;
+        cout << "Enter base: ";
+        cin >> a;
+        cout << "Enter exponent: ";
+        cin >> b;
+        cout << "Result: " << pow(a, b) << "\n";
+    }
+    else if (pilihan == "%" ) {
+        int a, b;
+        cout << "Enter number 1: ";
+        cin >> a;
+        cout << "Enter number 2: ";
+        cin >> b;
+        if (b != 0) cout << "Result: " << a % b << "\n";
+        else cout << "Error: Cannot modulo by zero!\n";
+    }
+    else {
+        cout << "How many numbers do you want to operate on: ";
+        cin >> n;
+        angka.resize(n);
+        for (int i = 0; i < n; i++) {
+            cout << "Enter number " << i+1 << ": ";
+            cin >> angka[i];
         }
-        else if (pilihan == "^") {
-            double a, b;
-            cout << "Masukan basis: ";
-            cin >> a;
-            cout << "Masukan pangkat: ";
-            cin >> b;
-            cout << "Hasil: " << pow(a, b) << "\n";
+
+        double hasil = angka[0];
+
+        if (pilihan == "+") {
+            for (int i = 1; i < n; i++) hasil += angka[i];
+            cout << "Result: " << hasil << "\n";
+        } 
+        else if (pilihan == "-") {
+            for (int i = 1; i < n; i++) hasil -= angka[i];
+            cout << "Result: " << hasil << "\n";
+        } 
+        else if (pilihan == "*") {
+            for (int i = 1; i < n; i++) hasil *= angka[i];
+            cout << "Result: " << hasil << "\n";
+        } 
+        else if (pilihan == "/") {
+            for (int i = 1; i < n; i++) {
+                if (angka[i] != 0) hasil /= angka[i];
+                else {
+                    cout << "Error: Cannot divide by zero!\n";
+                    hasil = numeric_limits<double>::quiet_NaN();
+                    break;
+                }
+            }
+            if (!isnan(hasil)) cout << "Result: " << hasil << "\n";
         }
-        else if (pilihan == "%" ) {
-            int a, b;
-            cout << "Masukan bilangan 1: ";
-            cin >> a;
-            cout << "Masukan bilangan 2: ";
-            cin >> b;
-            if (b != 0) cout << "Hasil: " << a % b << "\n";
-            else cout << "Error: Modulo dengan nol tidak bisa!\n";
+        else if (pilihan == "avg") {
+            double sum = 0;
+            for (double x : angka) sum += x;
+            cout << "Average: " << sum / n << "\n";
+        }
+        else if (pilihan == "max") {
+            double maks = angka[0];
+            for (int i = 1; i < n; i++) if (angka[i] > maks) maks = angka[i];
+            cout << "Maximum: " << maks << "\n";
+        }
+        else if (pilihan == "min") {
+            double mins = angka[0];
+            for (int i = 1; i < n; i++) if (angka[i] < mins) mins = angka[i];
+            cout << "Minimum: " << mins << "\n";
         }
         else {
-            cout << "Mau berapa angka yang ingin dioperasikan: ";
-            cin >> n;
-            angka.resize(n);
-            for (int i = 0; i < n; i++) {
-                cout << "Masukan angka ke-" << i+1 << ": ";
-                cin >> angka[i];
-            }
-
-            double hasil = angka[0];
-
-            if (pilihan == "+") {
-                for (int i = 1; i < n; i++) hasil += angka[i];
-                cout << "Hasil: " << hasil << "\n";
-            } 
-            else if (pilihan == "-") {
-                for (int i = 1; i < n; i++) hasil -= angka[i];
-                cout << "Hasil: " << hasil << "\n";
-            } 
-            else if (pilihan == "*") {
-                for (int i = 1; i < n; i++) hasil *= angka[i];
-                cout << "Hasil: " << hasil << "\n";
-            } 
-            else if (pilihan == "/") {
-                for (int i = 1; i < n; i++) {
-                    if (angka[i] != 0) hasil /= angka[i];
-                    else {
-                        cout << "Error: Pembagian dengan nol tidak bisa!\n";
-                        hasil = numeric_limits<double>::quiet_NaN();
-                        break;
-                    }
-                }
-                if (!isnan(hasil)) cout << "Hasil: " << hasil << "\n";
-            }
-            else if (pilihan == "avg") {
-                double sum = 0;
-                for (double x : angka) sum += x;
-                cout << "Rata-rata: " << sum / n << "\n";
-            }
-            else if (pilihan == "max") {
-                double maks = angka[0];
-                for (int i = 1; i < n; i++) if (angka[i] > maks) maks = angka[i];
-                cout << "Maksimum: " << maks << "\n";
-            }
-            else if (pilihan == "min") {
-                double mins = angka[0];
-                for (int i = 1; i < n; i++) if (angka[i] < mins) mins = angka[i];
-                cout << "Minimum: " << mins << "\n";
-            }
-            else {
-                cout << "Operasi tidak valid!\n";
-            }
+            cout << "Invalid operation!\n";
         }
+    }
 
-        cout << "\nApakah Anda ingin menghitung lagi? (y/n): ";
-        cin >> ulang;
-        cout << "\n";
+    cout << "\nDo you want to calculate again? (y/n): ";
+    cin >> ulang;
+    cout << "\n";
 
-    } while (ulang == 'y' || ulang == 'Y');
+} while (ulang == 'y' || ulang == 'Y');
 
-    cout << "Terima kasih sudah menggunakan Calck!\n";
-    return 0;
+cout << "Thank you for using Calck!\n";
+return 0;
 }
-
